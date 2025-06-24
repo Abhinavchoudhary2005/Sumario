@@ -3,10 +3,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 
 const HeroSection = () => {
-  const { user } = useAuth();
   const words = ["Summary", "Sumario"];
   const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -63,11 +61,7 @@ const HeroSection = () => {
           size="sm"
           className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-6 py-5 text-base font-medium rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
         >
-          {user
-            ? user.isPro
-              ? "Upload Your PDF ✨"
-              : "Upgrade to Upload ✨"
-            : "Try Sumario ✨"}
+          Try Sumario ✨
         </Button>
       </div>
     </section>

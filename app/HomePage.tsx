@@ -1,11 +1,7 @@
-"use client";
-
-import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import DemoSection from "@/components/DemoSection";
 import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
-import Footer from "@/components/Footer";
 
 const HomePage = () => {
   return (
@@ -28,12 +24,10 @@ const HomePage = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <Header />
         <HeroSection />
         <DemoSection />
         <HowItWorks />
         <Pricing />
-        <Footer />
       </div>
     </div>
   );
