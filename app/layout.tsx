@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 as FontSans } from "next/font/google";
 import "./globals.css";
+import ClientProviders from "@/components/ClientProviders";
 
 const fontSans = FontSans({
   variable: "--font-geist-sans",
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${fontSans.variable} font-sans antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={fontSans.variable}>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );
