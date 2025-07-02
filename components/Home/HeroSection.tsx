@@ -38,9 +38,9 @@ const HeroSection = () => {
   return (
     <section className="relative pb-14 pt-32 px-4 transition-colors duration-300 overflow-hidden">
       <div className="relative max-w-3xl mx-auto text-center animate-fade-in">
-        <div className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/60 dark:bg-gray-800/60 rounded-full border border-gray-200 dark:border-gray-700 mb-6 hover:scale-105 transition-transform duration-200">
-          <Sparkles className="w-3.5 h-3.5 text-pink-500" />
-          <span className="text-xs text-gray-600 dark:text-gray-300">
+        <div className="inline-flex cursor-pointer items-center space-x-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 rounded-full border border-gray-200 dark:border-gray-700 mb-6 hover:scale-105 transition-transform duration-200">
+          <Sparkles className="w-4 h-4 text-pink-500" />
+          <span className="text-sm text-gray-600 dark:text-gray-300">
             Powered by AI
           </span>
         </div>

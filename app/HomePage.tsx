@@ -1,7 +1,7 @@
-import HeroSection from "@/components/HeroSection";
-import DemoSection from "@/components/DemoSection";
-import HowItWorks from "@/components/HowItWorks";
-import Pricing from "@/components/Pricing";
+import HeroSection from "@/components/Home/HeroSection";
+import DemoSection from "@/components/Home/DemoSection";
+import HowItWorks from "@/components/Home/HowItWorks";
+import Pricing from "@/components/Home/Pricing";
 
 const HomePage = () => {
   return (
