@@ -31,7 +31,7 @@ export default function RootLayout({
         <ClerkProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <TooltipProvider>
-              <Toaster />
+              <Toaster position="top-right" offset={80} duration={3000} />
               <Header />
 
               {children}

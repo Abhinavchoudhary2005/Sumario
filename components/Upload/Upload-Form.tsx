@@ -6,6 +6,7 @@ import { File as FileIcon } from "lucide-react";
 import { z } from "zod";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
+import { generatePdfSummary } from "@/actions/upload-actions";
 
 export default function UploadForm() {
   const [file, setFile] = useState<File | null>(null);
@@ -34,27 +35,39 @@ export default function UploadForm() {
       toast.error("❌ Upload failed: " + (err?.message || "Unknown error"));
     },
     onUploadBegin: (file) => {
-      toast("⏳ Upload started for " + file);
+      toast(`⏳ Upload started for ${file}`);
     },
   });
 
   const handleUpload = async () => {
-    if (!file) return toast.error("No file selected");
+    if (!file) {
+      toast("⚠️ No file selected. Please upload a PDF file before proceeding.");
+      return;
+    }
 
-    const ValidatedFields = schema.safeParse({ file });
+    const validated = schema.safeParse({ file });
 
-    if (!ValidatedFields.success) {
-      toast.error(ValidatedFields.error.errors[0].message);
+    if (!validated.success) {
+      toast(`❌ File validation failed: ${validated.error.errors[0].message}`);
       return;
     }
 
     const resp = await startUpload([file]);
-    if (!resp) {
-      toast.error("Something went wrong during upload.");
-      return;
-    }
+    console.log(resp);
 
-    toast.success("🎉 File uploaded successfully!");
+    toast("📄 Processing PDF. Hang tight! Our AI is reading your document...");
+
+    const summaryResponse = await generatePdfSummary(resp);
+
+    toast("🧠 Generating summary... Analyzing the content...");
+
+    await new Promise((res) => setTimeout(res, 2000)); // Simulate delay
+
+    if (summaryResponse.success) {
+      toast(`🎯 Summary ready! ${summaryResponse.data.summary}`);
+    } else {
+      toast.error(`❌ Failed to generate summary: ${summaryResponse.message}`);
+    }
   };
 
   return (
